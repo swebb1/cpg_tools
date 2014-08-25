@@ -1,0 +1,43 @@
+<tool id="CpG" name="CpG">
+	<description>calculations</description>
+	<command interpreter="perl">
+	#if $search.pattern_search == "no" #CpG.pl --infile $infile --outfile $outfile --nthresh $nper
+	#else #CpG.pl --infile $infile --outfile $outfile --nthresh $nper --pattern $search.pattern $search.rc
+	#end if#
+       	</command>
+	<inputs>
+		<param format="fasta" name="infile" type="data" label="Sequence file"/>
+		<param name="nper" type="float" size="4" value="0.5" label="Maximum N coverage" help="Report windows with this fraction of Ns and less"/>
+		<conditional name="search">
+       			<param name="pattern_search" type="select" label="Search for a sequence pattern?">
+           				 <option value="yes">Yes</option>
+           				 <option value="no" selected="true">No</option>
+       			</param>
+			<when value="yes">
+				<param name="pattern" type="text" format="txt" value="cccgccc" size="20" label="Search for a sequence pattern?">
+					<validator type="empty_field" message="please enter a value"/>
+				</param>
+                                <param name="rc" type="select" label="Search for reverse complement?">
+                                         <option value="--rc">Yes</option>
+                                         <option value="" selected="true">No</option>
+                                </param>
+        		</when>
+       			<when value="no">
+        		</when>
+    		</conditional>	
+	</inputs>
+	<outputs>
+		<data format="tabular" name="outfile" />
+	</outputs>
+	<help>
+
+.. class:: infomark
+
+**What it does**
+
+This tool takes a file in Fasta format and calculates the observed CpG, observed/expected, length and GC content
+
+It can also report the number of occurences of a sequence motif. If you select to search the reverse complement, pallindromic sequences will be counted twice.
+  
+	</help>
+</tool>
