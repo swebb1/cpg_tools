@@ -2,6 +2,7 @@ cpg_tools
 =========
 
 CpG.pl
+===
 Calculate CpG statistics over entire fasta record.
 
 --infile: Input fasta file
@@ -10,6 +11,7 @@ Calculate CpG statistics over entire fasta record.
 
 
 CpGwindow.pl
+===
 Split fasta record in to a window of defined size and calculate CpG statistics per window.
 
 --infile: Input fasta file
@@ -19,6 +21,7 @@ Split fasta record in to a window of defined size and calculate CpG statistics p
 --nthresh: Include fasta records with this fraction of Ns or less (use a fraction of 1)
 
 CpGseq.pl
+===
 Generate random sequences using parameters of length, GC content and CpG observed/expected ratio.
 
 --out: Output file
